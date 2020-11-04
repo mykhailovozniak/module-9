@@ -20,10 +20,10 @@ func main() {
 
 	for i := 0; i < len(urls); i++ {
 		select {
-		case urlStatus := <- c:
-			fmt.Println(urlStatus)
 		case <- ctx.Done():
 			fmt.Println(os.Stderr, "Error during crawling web sites")
+		case urlStatus := <- c:
+			fmt.Println(urlStatus)
 		}
 	}
 
